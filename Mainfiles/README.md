@@ -1,6 +1,6 @@
 #####################Discord Bot###########################
 
-here is the main brains of the repositoooooooooooooooooory.
+here is the main brains of the repository.
 
 any main push or commits will execute the script again.
 
