@@ -22,6 +22,12 @@ def help():
 def reminder():
     return "reminder.txt for specific people maybe set timers? and it will @them reminding them like an alarmclock"
 
+def RefreshAll():
+    help()
+    reminder()
+    igiveup()
+
+    
 #create text trigger here with function
 triggers = {
             "!igiveup": igiveup(),
