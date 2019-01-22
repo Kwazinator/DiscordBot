@@ -22,6 +22,7 @@ def help():
 def reminder():
     return "reminder.txt for specific people maybe set timers? and it will @them reminding them like an alarmclock"
 
+#if your resonses ever change, must include in here so dictonary refreshes answers
 def RefreshAll():
     help()
     reminder()
