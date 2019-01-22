@@ -1,7 +1,8 @@
 import RobotSlave
 import datetime
 
-#for transparency, variables saved to files since program might restart often
+
+# for transparency, variables saved to files since program might restart often
 def igiveup():
     with open('dayandhasconfig.txt', 'r') as file:
         data = file.read()
@@ -16,22 +17,19 @@ def igiveup():
             answer = myfile.read()
     return answer
 
+
 def help():
     return "help stuff"
+
 
 def reminder():
     return "reminder.txt for specific people maybe set timers? and it will @them reminding them like an alarmclock"
 
-#if your resonses ever change, must include in here so dictonary refreshes answers
-def RefreshAll():
-    help()
-    reminder()
-    igiveup()
-
-    
-#create text trigger here with function
-triggers = {
-            "!igiveup": igiveup(),
-            "!help": help(),
-            "!reminder": reminder()
-}
+def GetTrigger():
+    # create text trigger here with function
+    triggers = {
+        "!igiveup": igiveup(),
+        "!help": help(),
+        "!reminder": reminder()
+    }
+    return triggers
