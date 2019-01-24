@@ -26,7 +26,7 @@ def reminder():
     return "reminder.txt for specific people maybe set timers? and it will @them reminding them like an alarmclock"
 
 def GetTrigger():
-    # create text trigger here with function
+    # create text trigger here with function, creating a dictionary for external to use
     triggers = {
         "!igiveup": igiveup(),
         "!help": help(),
