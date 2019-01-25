@@ -34,3 +34,9 @@ def GetTrigger():
         "!reminder": reminder()
     }
     return triggers
+
+#####################################install additional modules#####################################
+#example using pip (run once then append at top for import module-name)
+#subprocess.call("#!~/Desktop/GITHUB/DiscordBot/Mainfiles/venv/Scripts \n pip install module-name", shell=true)
+#
+####################################################################################################
