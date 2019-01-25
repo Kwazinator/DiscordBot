@@ -1,7 +1,7 @@
 import RobotSlave
 import datetime
 
-
+######################################START DEF METHODS##############################################
 # for transparency, variables saved to files since program might restart often
 def igiveup():
     with open('dayandhasconfig.txt', 'r') as file:
@@ -17,16 +17,17 @@ def igiveup():
             answer = myfile.read()
     return answer
 
-#help function
 def help():
     return "help stuff"
 
 
 def reminder():
     return "reminder.txt for specific people maybe set timers? and it will @them reminding them like an alarmclock"
+######################################END DEF METHODS#################################################
 
+
+#add the "msgtotrigger": (function returning message to send), dont forget the comma!
 def GetTrigger():
-    # create text trigger here with function, creating a dictionary for external to use
     triggers = {
         "!igiveup": igiveup(),
         "!help": help(),
