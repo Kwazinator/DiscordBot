@@ -18,7 +18,7 @@ def igiveup():
     return answer
 
 def help():
-    return "help stuff"
+    return "!igiveup: provides a solution to the daily Robot Reboot Challenge !help: provides this wonderful text !reminder: dont do nuffing yet"
 
 
 def reminder():
