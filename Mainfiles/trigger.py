@@ -18,13 +18,6 @@ def igiveup():
     return answer
 
 
-def commands():
-    message = 'Commands: '
-    for key in GetTrigger().keys():
-        message += key + ' '
-    return message
-
-
 def help():
     return "!igiveup: provides a solution to the daily Robot Reboot Challenge !help: provides this wonderful text !reminder: dont do nuffing yet"
 
@@ -39,8 +32,7 @@ def GetTrigger():
     triggers = {
         "!igiveup": igiveup(),
         "!help": help(),
-        "!reminder": reminder(),
-        "!commands": commands()
+        "!reminder": reminder()
     }
     return triggers
 
