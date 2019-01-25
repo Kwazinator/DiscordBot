@@ -22,6 +22,10 @@ def help():
     return "help stuff"
 
 
+def gitpushtest():
+    return "testing"
+
+
 def reminder():
     return "reminder.txt for specific people maybe set timers? and it will @them reminding them like an alarmclock"
 
@@ -30,6 +34,7 @@ def GetTrigger():
     triggers = {
         "!igiveup": igiveup(),
         "!help": help(),
-        "!reminder": reminder()
+        "!reminder": reminder(),
+        "!gitpushtest": gitpushtest()
     }
     return triggers
