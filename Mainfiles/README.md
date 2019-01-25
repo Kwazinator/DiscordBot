@@ -1,10 +1,14 @@
 #####################Discord Bot#################################
+
 Basic:
+
 Edit trigger.py in Mainfiles/ to add a funciton to Khazam discord bot.
 
 add function that returns the string to send back and then add the trigger.
 
+
 Advanced:
+
 if you need to import mode modules to pythonlibrary use subprocess with shebang,
 
 example:
