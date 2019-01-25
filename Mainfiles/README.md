@@ -1,8 +1,15 @@
-#####################Discord Bot###########################
+#####################Discord Bot#################################
+Basic:
+Edit trigger.py in Mainfiles/ to add a funciton to Khazam discord bot.
+add function that returns the string to send back and then add the trigger.
 
-here is the main brains of the repository.
+Advanced:
+if you need to import mode modules to pythonlibrary use subprocess with shebang,
+example:
+subprocess.call("#!~/Desktop/GITHUB/DiscordBot/Mainfiles/venv/Scripts \\n pip install module-name", shell=true)
+or ask me i can install module needed.
 
-any main push or commits will execute the script again.
+save variables in a txt/json/dat files whatever you want
 
-PS. Ive hid the Oauth token now so you hackers cant get me
-############################################################
+rollback git if everything breaks
+##################################################################
