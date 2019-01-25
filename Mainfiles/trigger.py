@@ -20,7 +20,7 @@ def igiveup():
 
 def commands():
     message = 'Commands: '
-    for key in triggers.keys():
+    for key in GetTrigger.keys():
         message += key + ' '
     return message
 
