@@ -17,6 +17,14 @@ def igiveup():
             answer = myfile.read()
     return answer
 
+
+def commands():
+    message = 'Commands: '
+    for key in triggers.keys():
+        message += key + ' '
+    return message
+
+
 def help():
     return "!igiveup: provides a solution to the daily Robot Reboot Challenge !help: provides this wonderful text !reminder: dont do nuffing yet"
 
@@ -31,7 +39,8 @@ def GetTrigger():
     triggers = {
         "!igiveup": igiveup(),
         "!help": help(),
-        "!reminder": reminder()
+        "!reminder": reminder(),
+        "!commands": commands()
     }
     return triggers
 
