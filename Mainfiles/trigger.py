@@ -42,7 +42,7 @@ def GetTrigger():
         "!help": help(),
         "!reminder": reminder(),
         "!whoami": whoami(),
-        "!whoamireally: whoamireally()
+        "!whoamireally": whoamireally()
     }
     return triggers
 
