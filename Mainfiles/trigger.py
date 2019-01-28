@@ -18,7 +18,11 @@ def igiveup():
     return answer
 
 def whoami():
+    return "You are you."
+
+def whoamireally():
     return "I am he, as you are he, as you are me and we are all together."
+
 
 
 
@@ -37,7 +41,8 @@ def GetTrigger():
         "!igiveup": igiveup(),
         "!help": help(),
         "!reminder": reminder(),
-        "!whoami": whoami()
+        "!whoami": whoami(),
+        "!whoamireally: whoamireally()
     }
     return triggers
 
