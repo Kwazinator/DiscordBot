@@ -17,6 +17,10 @@ def igiveup():
             answer = myfile.read()
     return answer
 
+def whoami():
+    return "you are you"
+
+
 
 def help():
     return "!igiveup: provides a solution to the daily Robot Reboot Challenge !help: provides this wonderful text !reminder: dont do nuffing yet"
@@ -32,7 +36,8 @@ def GetTrigger():
     triggers = {
         "!igiveup": igiveup(),
         "!help": help(),
-        "!reminder": reminder()
+        "!reminder": reminder(),
+        "!whoami": whoami()
     }
     return triggers
 
