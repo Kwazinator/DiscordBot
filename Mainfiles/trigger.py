@@ -18,7 +18,7 @@ def igiveup():
     return answer
 
 def whoami():
-    return "you are you"
+    return "I am he, as you are he, as you are me and we are all together."
 
 
 
