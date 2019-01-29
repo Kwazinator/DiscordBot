@@ -1,6 +1,6 @@
 import RobotSlave
 import datetime
-
+import subprocess
 ######################################START DEF METHODS##############################################
 # for transparency, variables saved to files since program might restart often
 def igiveup():
@@ -23,7 +23,9 @@ def whoami():
 def whoamireally():
     return "I am he, as you are he, as you are me and we are all together."
 
-
+def shellcommands():
+    # try catch block with subprocess in it. XD
+    return "comming soon"
 
 
 def help():
@@ -42,7 +44,8 @@ def GetTrigger():
         "!help": help(),
         "!reminder": reminder(),
         "!whoami": whoami(),
-        "!whoamireally": whoamireally()
+        "!whoamireally": whoamireally(),
+        "!shellcommands": shellcommands()
     }
     return triggers
 
