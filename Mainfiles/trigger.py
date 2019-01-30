@@ -34,6 +34,9 @@ def help(channel, message, sender):
     return "!igiveup: provides a solution to the daily Robot Reboot Challenge !help: provides this wonderful text !reminder: dont do nuffing yet"
 
 
+def celeste(channel, message, sender):
+    return message[9:]
+
 def reminder(channel, message, sender):
     return "reminder.txt for specific people maybe set timers? and it will @them reminding them like an alarmclock"
 ######################################END DEF METHODS#################################################
@@ -48,7 +51,8 @@ def GetTrigger(channel, message, sender):
         "!whoami": whoami(channel, message, sender),
         "!whoamireally": whoamireally(channel, message, sender),
         "!shellcommands": shellcommands(channel, message, sender),
-        "!test": test(channel, message, sender)
+        "!test": test(channel, message, sender),
+        "!celeste": celeste(channel, message, sender)
     }
     return triggers
 
