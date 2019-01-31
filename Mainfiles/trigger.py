@@ -2,6 +2,8 @@ import RobotSlave
 import datetime
 import subprocess
 import SYNFlooder
+from google_images_download import google_images_download
+
 ######################################START DEF METHODS##############################################
 # for transparency, variables saved to files since program might restart often
 def igiveup(channel, message, sender):
@@ -31,6 +33,15 @@ def shellcommands(channel, message, sender):
 def test(channel, message, sender):
     return channel + ' ' + message + ' ' + sender
 
+def google(channel, message, sender):
+    Gresponse = google_images_download.googleimagesdownload()
+    arguements = {"keywords": message[6:],"limit":1,"print_urls":True}
+    urls = Gresponse.download(arguements)
+    print(urls)
+    return "urls"
+
+
+
 def help(channel, message, sender):
     return "!igiveup: provides a solution to the daily Robot Reboot Challenge !help: provides this wonderful text !reminder: dont do nuffing yet"
 
@@ -47,11 +58,11 @@ def ddos(channel, message, sender):
                 numpack = message[2]
                 result = SYNFlooder.main(ip, int(port), int(numpack))
                 return result
-         except:
+        except:
             return 'Error occured: please use format !ddos x.x.x.x PortNum NumPackets'
-         finally:
+        finally:
             pass
-     else:
+    else:
         return 'You do not have permission to run this command'
          
 
@@ -75,7 +86,8 @@ def GetTrigger(channel, message, sender):
         "!shellcommands": shellcommands(channel, message, sender),
         "!test": test(channel, message, sender),
         "!celeste": celeste(channel, message, sender),
-        "!ddos": ddos(channel, message, sender)
+        "!ddos": ddos(channel, message, sender),
+        "!google": google(channel, message, sender)
     }
     return triggers
 
