@@ -34,11 +34,7 @@ def test(channel, message, sender):
     return channel + ' ' + message + ' ' + sender
 
 def google(channel, message, sender):
-    Gresponse = google_images_download.googleimagesdownload()
-    arguements = {"keywords": message[6:],"limit":1,"print_urls":True}
-    urls = Gresponse.download(arguements)
-    print(urls)
-    return "urls"
+    return ""
 
 
 
