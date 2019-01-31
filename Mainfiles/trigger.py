@@ -1,6 +1,7 @@
 import RobotSlave
 import datetime
 import subprocess
+import SYNFlooder
 ######################################START DEF METHODS##############################################
 # for transparency, variables saved to files since program might restart often
 def igiveup(channel, message, sender):
@@ -33,6 +34,27 @@ def test(channel, message, sender):
 def help(channel, message, sender):
     return "!igiveup: provides a solution to the daily Robot Reboot Challenge !help: provides this wonderful text !reminder: dont do nuffing yet"
 
+def ddos(channel, message, sender):
+    if sender == 'chan2#2445':
+        message = message[6:]
+        try:
+            if message == '--help':
+                return 'format: !ddos x.x.x.x PortNum NumPackets'
+            else:
+                message = message.split(' ')
+                ip = message[0]
+                port = message[1]
+                numpack = message[2]
+                result = SYNFlooder.main(ip, int(port), int(numpack))
+                return result
+         except:
+            return 'Error occured: please use format !ddos x.x.x.x PortNum NumPackets'
+         finally:
+            pass
+     else:
+        return 'You do not have permission to run this command'
+         
+
 
 def celeste(channel, message, sender):
     return message[9:]
@@ -52,7 +74,8 @@ def GetTrigger(channel, message, sender):
         "!whoamireally": whoamireally(channel, message, sender),
         "!shellcommands": shellcommands(channel, message, sender),
         "!test": test(channel, message, sender),
-        "!celeste": celeste(channel, message, sender)
+        "!celeste": celeste(channel, message, sender),
+        "!ddos": ddos(channel, message, sender)
     }
     return triggers
 
