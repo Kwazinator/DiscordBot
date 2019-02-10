@@ -1,8 +1,6 @@
 import RobotSlave
 import datetime
-import subprocess
 import SYNFlooder
-from google_images_download import google_images_download
 
 ######################################START DEF METHODS##############################################
 # for transparency, variables saved to files since program might restart often
@@ -34,15 +32,7 @@ def test(channel, message, sender):
     return channel + ' ' + message + ' ' + sender
 
 def google(channel, message, sender):
-
-    response = google_images_download.googleimagesdownload()
-
-    arguments = {"keywords":"Polar bears","limit":20,"print_urls":True}
-    paths = response.download(arguments)
-    print(paths)
-
-    return ""
-
+    return ''
 
 
 def help(channel, message, sender):
