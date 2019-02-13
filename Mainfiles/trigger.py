@@ -3,6 +3,9 @@ import datetime
 import SYNFlooder
 from PIL import Image
 from pytesseract import image_to_string
+from urllib.request import urlopen
+import io
+
 ######################################START DEF METHODS##############################################
 # for transparency, variables saved to files since program might restart often
 def igiveup(channel, message, sender):
@@ -61,14 +64,19 @@ def ddos(channel, message, sender):
          
 
 def OCR(channel, message, sender):
-    try:
-        message = message[5:]
-        return image_to_string(Image.open(message))
-    except Exception as e:
-        print(e)
-        return "error occured durring process"
-    finally:
-        pass
+    if '!OCR' in message:
+        try:
+            message = message[5:]
+            fd = urlopen(message)
+            image_file = io.BytesIO(fd.read())
+            return image_to_string(Image.open(image_file))
+        except Exception as e:
+            print(e)
+            return "error occured durring process"
+        finally:
+            pass
+    else:
+        return ''
 
 def celeste(channel, message, sender):
     return message[9:]
