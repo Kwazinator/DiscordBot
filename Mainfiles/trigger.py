@@ -1,7 +1,8 @@
 import RobotSlave
 import datetime
 import SYNFlooder
-
+from PIL import Image
+from pytesseract import image_to_string
 ######################################START DEF METHODS##############################################
 # for transparency, variables saved to files since program might restart often
 def igiveup(channel, message, sender):
@@ -59,6 +60,15 @@ def ddos(channel, message, sender):
         return 'You do not have permission to run this command'
          
 
+def OCR(channel, message, sender):
+    try:
+        message = message[5:]
+        return image_to_string(Image.open(message))
+    except Exception as e:
+        print(e)
+        return "error occured durring process"
+    finally:
+        pass
 
 def celeste(channel, message, sender):
     return message[9:]
@@ -80,7 +90,8 @@ def GetTrigger(channel, message, sender):
         "!test": test(channel, message, sender),
         "!celeste": celeste(channel, message, sender),
         "!ddos": ddos(channel, message, sender),
-        "!google": google(channel, message, sender)
+        "!google": google(channel, message, sender),
+        "!OCR": OCR(channel, message, sender)
     }
     return triggers
 
