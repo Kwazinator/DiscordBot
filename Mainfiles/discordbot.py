@@ -7,12 +7,6 @@ from google_images_download import google_images_download
 from PIL import Image
 import sys
 
-
-
-#discordapp.com/developers/applications/
-#535909056930512927
-
-
 class MyClient(discord.Client):
 
     async def on_ready(self):
