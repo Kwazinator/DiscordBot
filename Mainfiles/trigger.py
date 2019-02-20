@@ -6,7 +6,7 @@ from pytesseract import image_to_string
 from urllib.request import urlopen
 import sys
 import io
-sys.path.insert(0, '/home/kwazinator/Desktop/GITHUB/DiscordBot/Mainfiles')
+sys.path.insert(0, '/home/kwazinator/Desktop/GITHUB/DiscordBot/Mainfiles/')
 
 ######################################START DEF METHODS##############################################
 # for transparency, variables saved to files since program might restart often
