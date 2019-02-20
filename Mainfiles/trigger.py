@@ -6,6 +6,9 @@ from pytesseract import image_to_string
 from urllib.request import urlopen
 import sys
 import io
+import requests
+import json
+
 sys.path.insert(0, '/home/kwazinator/Desktop/GITHUB/DiscordBot/Mainfiles/')
 
 ######################################START DEF METHODS##############################################
@@ -80,6 +83,25 @@ def OCR(channel, message, sender):
     else:
         return ''
 
+def apex(channel, message, sender):
+    if '!apex' in message:
+        print('here')
+        req = requests.Session()
+        req.headers.update({'TRN-Api-Key': 'ddf05c3b-818b-470a-91fc-b7d1f4704883',
+                                     'Accept': 'application/vnd.api+json'})
+        headers = {"TRN-Api-Key": 'ddf05c3b-818b-470a-91fc-b7d1f4704883', }
+        url = 'https://public-api.tracker.gg/apex/v1/standard/profile/5/' + message[6:]
+        r = req.get(url)
+        return str(json.loads(r.text))
+    else:
+        pass
+
+    return ''
+
+
+
+
+
 def celeste(channel, message, sender):
     return message[9:]
 
@@ -101,7 +123,8 @@ def GetTrigger(channel, message, sender):
         "!celeste": celeste(channel, message, sender),
         "!ddos": ddos(channel, message, sender),
         "!google": google(channel, message, sender),
-        "!OCR": OCR(channel, message, sender)
+        "!OCR": OCR(channel, message, sender),
+        "!apex": apex(channel, message, sender)
     }
     return triggers
 
