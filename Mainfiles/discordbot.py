@@ -9,10 +9,6 @@ import sys
 
 
 
-#discordapp.com/developers/applications/
-#535909056930512927
-
-
 class MyClient(discord.Client):
 
     async def on_ready(self):
