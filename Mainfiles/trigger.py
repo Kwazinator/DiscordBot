@@ -106,7 +106,7 @@ def apex(channel, message, sender):
         stringtoreturn += 'Level: ' + level + '\n'
         stringtoreturn += 'Player Ranking: ' + rank + '\n'
         for index, name in enumerate(namer):
-            stringtoreturn += name + ': ' + valuer[index] + '\n' + 'Percentile: ' + percentiler[index] + '\n'
+            stringtoreturn += name + ': ' + valuer[index] + '             ' + 'Percentile: ' + percentiler[index] + '\n'
         #print(json.dumps(data, sort_keys=True, indent=4))
         return stringtoreturn + icon
     else:
