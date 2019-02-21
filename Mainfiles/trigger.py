@@ -94,7 +94,7 @@ def apex(channel, message, sender):
         data = json.loads(r.text)
         legend_name = str(data['data']['children'][0]['metadata']['legend_name'])
         icon = str(data['data']['children'][0]['metadata']['icon'])
-        namer, percentiler, ranker, valuer = '' for x in range(3), '' for x in range(3), '' for x in range(3), '' for x in range(3)
+        namer, percentiler, ranker, valuer = ['' for x in range(3)], ['' for x in range(3)], ['' for x in range(3)], ['' for x in range(3)]
         for index, dater in enumerate(data['data']['children'][0]['stats']):
             namer[index] += dater['metadata']['name'] + ' '
             percentiler[index] += str(dater['percentile']) + ' '
