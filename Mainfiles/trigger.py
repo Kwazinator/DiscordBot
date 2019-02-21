@@ -100,8 +100,8 @@ def apex(channel, message, sender):
             percentiler[index] += str(dater['percentile']) + ' '
             ranker[index] += str(dater['rank']) + ' '
             valuer[index] += str(dater['value']) + ' '
-        level = str(data['data']['children'][0]['stats'][0]['displayValue'])
-        rank = str(data['data']['children'][0]['stats'][0]['displayRank'])
+        level = str(data['data']['children']['stats'][0]['displayValue'])
+        rank = str(data['data']['children']['stats'][0]['displayRank'])
         stringtoreturn = legend_name + ' Player' + '\n\n'
         stringtoreturn += 'Level: ' + level + '\n'
         stringtoreturn += 'Player Ranking: ' + rank + '\n'
