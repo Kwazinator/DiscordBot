@@ -20,50 +20,63 @@ class MyClient(discord.Client):
         utf8message = '{0.content}'.format(message)
         sender = '{0.author}'.format(message)
         #load text for each channel
-        filename = "Fenox" + str(message.channel) + '.txt'
-        with open(filename,'a') as myfile:
-            myfile.write(utf8message + '\n')
+        if sender != 'Kahzam#8492':
+            filename = "Fenox" + str(message.channel) + '.txt'
+            if utf8message[0] != '!':
+                with open(filename,'a') as myfile:
+                    myfile.write(utf8message + '\n')
 
-        #reload for gitpushes
-        t = reload(trigger)
+            #reload for gitpushes
+            t = reload(trigger)
 
 
-        checkmessage = utf8message.split(' ')[0]
-        trig = t.GetTrigger(str(message.channel), utf8message,sender)
-        if checkmessage in trig:
-            msg = trig.get(checkmessage, "")
-        else:
-            msg = ""
-        #print(msg)
-        if checkmessage == "!google":
-            response = google_images_download.googleimagesdownload() #limit is number of images to put in
-            arguments = {"keywords": utf8message[7:], "limit": 3, "print_urls": True}
-            paths = response.download(arguments)
-            paths = paths[utf8message[7:]]
-            images = map(Image.open, paths)
-            widths, heights = zip(*(i.size for i in images))
-            images = map(Image.open, paths) #apparently maps can only be iterated over once
-            total_width = sum(widths)
-            max_height = max(heights)
+            checkmessage = utf8message.split(' ')[0]
+            trig = t.GetTrigger(str(message.channel), utf8message,sender)
+            if checkmessage in trig:
+                msg = trig.get(checkmessage, "")
+            elif utf8message[0] == '!':
+                msg = "invalid command please use !help for help"
+            else:
+                msg = ''
+            #print(msg)
+            if checkmessage == "!google":
+                response = google_images_download.googleimagesdownload() #limit is number of images to put in
+                arguments = {"keywords": utf8message[7:], "limit": 3, "print_urls": True}
+                paths = response.download(arguments)
+                paths = paths[utf8message[7:]]
+                images = map(Image.open, paths)
+                widths, heights = zip(*(i.size for i in images))
+                images = map(Image.open, paths) #apparently maps can only be iterated over once
+                total_width = sum(widths)
+                max_height = max(heights)
 
-            new_im = Image.new('RGB', (total_width, max_height))
+                new_im = Image.new('RGB', (total_width, max_height))
 
-            x_offset = 0
-            for im in images:
-                new_im.paste(im, (x_offset,0))
-                x_offset += im.size[0]
-            newimage = '/home/kwazinator/Desktop/GITHUB/DiscordBot/Mainfiles/downloads/' + utf8message[8:] + '.jpg'
-            new_im.save(newimage, "JPEG")
-            with open(newimage, 'rb') as picture:
-                await client.send_file(message.channel, picture)
+                x_offset = 0
+                for im in images:
+                    new_im.paste(im, (x_offset,0))
+                    x_offset += im.size[0]
+                newimage = '/home/kwazinator/Desktop/GITHUB/DiscordBot/Mainfiles/downloads/' + utf8message[8:] + '.jpg'
+                new_im.save(newimage, "JPEG")
+                with open(newimage, 'rb') as picture:
+                    await client.send_file(message.channel, picture)
 
-        elif utf8message == "!wordcloud":
-            FenoxWordcloud.dochannel(filename)
-            picture = filename + '.png'
-            with open(picture, 'rb') as picture:
-                await client.send_file(message.channel, picture)
-        if msg != "":
-            await client.send_message(message.channel, msg)
+            elif utf8message == "!wordcloud":
+                FenoxWordcloud.dochannel(filename)
+                picture = filename + '.png'
+                with open(picture, 'rb') as picture:
+                    await client.send_file(message.channel, picture)
+            if msg != "":
+                if msg.count('\n') > 30:
+                    index = 0
+                    for strings in msg.splitlines():
+                        newmsg += strings
+                        if index > 30:
+                            await client.send_message(message.channel,newmsg)
+                            index = 0
+                            newmsg = ''
+                        index += 1
+                await client.send_message(message.channel, msg)
 
 client = MyClient()
 with open('clientid.dat','r') as myfile:
