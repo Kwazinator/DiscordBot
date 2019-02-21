@@ -86,37 +86,46 @@ def OCR(channel, message, sender):
 
 def apex(channel, message, sender):
     if '!apex' in message[0:7]:
-        req = requests.Session()
-        req.headers.update({'TRN-Api-Key': 'ddf05c3b-818b-470a-91fc-b7d1f4704883',
-                                     'Accept': 'application/vnd.api+json'})
-        url = 'https://public-api.tracker.gg/apex/v1/standard/profile/5/' + message[6:]
-        r = req.get(url)
-        data = json.loads(r.text)
-        legend_name = str(data['data']['children'][0]['metadata']['legend_name'])
-        icon = str(data['data']['children'][0]['metadata']['icon'])
-        namer, percentiler, ranker, valuer = ['' for x in range(3)], ['' for x in range(3)], ['' for x in range(3)], ['' for x in range(3)]
-        for index, dater in enumerate(data['data']['children'][0]['stats']):
-            namer[index] += dater['metadata']['name'] + ' '
-            percentiler[index] += str(dater['percentile']) + ' '
-            ranker[index] += str(dater['rank']) + ' '
-            valuer[index] += str(dater['value']) + ' '
-        level = str(data['data']['stats'][0]['displayValue'])
-        rank = str(data['data']['stats'][0]['displayRank'])
-        stringtoreturn = legend_name + ' Player' + '\n\n'
-        stringtoreturn += 'Level: ' + level + '\n'
-        stringtoreturn += 'Player Ranking: ' + rank + '\n'
-        for index, name in enumerate(namer):
-            if valuer[index] == '' or percentiler[index] == '':
-                pass
-            else:
-                stringtoreturn += name + ': ' + valuer[index] + '\t\t' + 'Percentile: ' + percentiler[index] + '\n'
-        print(json.dumps(data, sort_keys=True, indent=4))
-        return stringtoreturn + icon
-    else:
-        pass
-
+        try:
+            req = requests.Session()
+            req.headers.update({'TRN-Api-Key': 'ddf05c3b-818b-470a-91fc-b7d1f4704883',
+                                'Accept': 'application/vnd.api+json'})
+            url = 'https://public-api.tracker.gg/apex/v1/standard/profile/5/' + message[6:]
+            r = req.get(url)
+            data = json.loads(r.text)
+        except Exception as e:
+            return 'make sure the name is spelled correctly!'
+        finally:
+            pass
+        try:
+            legend_name = str(data['data']['children'][0]['metadata']['legend_name'])
+            icon = str(data['data']['children'][0]['metadata']['icon'])
+            namer, percentiler, ranker, valuer = ['' for x in range(3)], ['' for x in range(3)], ['' for x in
+                                                                                                  range(3)], ['' for x
+                                                                                                              in
+                                                                                                              range(3)]
+            for index, dater in enumerate(data['data']['children'][0]['stats']):
+                namer[index] += dater['metadata']['name'] + ' '
+                percentiler[index] += str(dater['percentile']) + ' '
+                ranker[index] += str(dater['rank']) + ' '
+                valuer[index] += str(dater['value']) + ' '
+            level = str(data['data']['stats'][0]['displayValue'])
+            rank = str(data['data']['stats'][0]['displayRank'])
+            stringtoreturn = legend_name + ' Player' + '\n\n'
+            stringtoreturn += 'Level: ' + level + '\n'
+            stringtoreturn += 'Player Ranking: ' + rank + '\n'
+            for index, name in enumerate(namer):
+                if valuer[index] == '' or percentiler[index] == '':
+                    pass
+                else:
+                    stringtoreturn += name + ': ' + valuer[index] + '\t\t' + 'Percentile: ' + percentiler[index] + '\n'
+            print(json.dumps(data, sort_keys=True, indent=4))
+            return stringtoreturn + icon
+        except Exception as e:
+            return 'unable to parse from API'
+        finally:
+            pass
     return ''
-
 
 
 

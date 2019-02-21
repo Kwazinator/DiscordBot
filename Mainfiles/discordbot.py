@@ -67,15 +67,6 @@ class MyClient(discord.Client):
                 with open(picture, 'rb') as picture:
                     await client.send_file(message.channel, picture)
             if msg != "":
-                if msg.count('\n') > 30:
-                    index = 0
-                    for strings in msg.splitlines():
-                        newmsg += strings
-                        if index > 30:
-                            await client.send_message(message.channel,newmsg)
-                            index = 0
-                            newmsg = ''
-                        index += 1
                 await client.send_message(message.channel, msg)
 
 client = MyClient()
