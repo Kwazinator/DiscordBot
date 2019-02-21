@@ -91,8 +91,9 @@ def apex(channel, message, sender):
                                      'Accept': 'application/vnd.api+json'})
         url = 'https://public-api.tracker.gg/apex/v1/standard/profile/5/' + message[6:]
         r = req.get(url)
-        data = json.dumps(r.text, sort_keys=True, indent=4)
-        return str(data)
+        data = json.loads(r.text)
+        stringtoreturn = json.dumps(data, sort_keys=True, indent=4)
+        return stringtoreturn
     else:
         pass
 
