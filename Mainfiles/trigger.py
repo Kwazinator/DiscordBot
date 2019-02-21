@@ -85,14 +85,15 @@ def OCR(channel, message, sender):
 
 def apex(channel, message, sender):
     if '!apex' in message:
-        print('here')
         req = requests.Session()
         req.headers.update({'TRN-Api-Key': 'ddf05c3b-818b-470a-91fc-b7d1f4704883',
                                      'Accept': 'application/vnd.api+json'})
-        headers = {"TRN-Api-Key": 'ddf05c3b-818b-470a-91fc-b7d1f4704883', }
         url = 'https://public-api.tracker.gg/apex/v1/standard/profile/5/' + message[6:]
         r = req.get(url)
-        return str(json.loads(r.text))
+        data = json.loads(r.text)
+        for value in data:
+            print(value)
+        return str(data)
     else:
         pass
 
