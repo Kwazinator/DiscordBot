@@ -46,7 +46,7 @@ def google(channel, message, sender):
 
 
 def help(channel, message, sender):
-    return "!apex: provides detailed information about said player in Apex doing an API-Lookup --Usage !apex {player-name}\n!igiveup: provides a solution to the daily Robot Reboot Challenge\n!google: google-image-searches 3 images and combines and links --Usage !google {term}\n!ddos sends a TCP SYNFlood attach to destination IP, B/W ~500mbps --Usage !ddos {ipaddress x.x.x.x} {PortNum} {NumPackets}\n!OCR Optical Character Recognition, puts specified JPEG image into text so you can Cntrl-C it, --USAGE !OCR {complete path to .jpg MUST end with direct filename use 'copy link address' when rightclicking}"
+    return "!igiveup: provides a solution to the daily Robot Reboot Challenge\n!apex: provides detailed information about said player in Apex doing an API-Lookup --Usage !apex {player-name}\n!google: google-image-searches 3 images and combines and links --Usage !google {term}\n!ddos sends a TCP SYNFlood attach to destination IP, B/W ~500mbps --Usage !ddos {ipaddress x.x.x.x} {PortNum} {NumPackets}\n!OCR Optical Character Recognition, puts specified JPEG image into text so you can Cntrl-C it, --USAGE !OCR {complete path to .jpg MUST end with direct filename use 'copy link address' when rightclicking}"
 
 def ddos(channel, message, sender):
     if sender == 'chan2#2445':
@@ -85,7 +85,7 @@ def OCR(channel, message, sender):
         return ''
 
 def apex(channel, message, sender):
-    if '!apex' in message:
+    if '!apex' in message[7:]:
         req = requests.Session()
         req.headers.update({'TRN-Api-Key': 'ddf05c3b-818b-470a-91fc-b7d1f4704883',
                                      'Accept': 'application/vnd.api+json'})
