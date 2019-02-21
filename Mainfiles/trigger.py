@@ -9,6 +9,7 @@ import io
 import requests
 import json
 
+#needed for script to be run in any file location, will migrate to database at some point
 sys.path.insert(0, '/home/kwazinator/Desktop/GITHUB/DiscordBot/Mainfiles/')
 
 ######################################START DEF METHODS##############################################
@@ -92,7 +93,7 @@ def apex(channel, message, sender):
         r = req.get(url)
         data = json.loads(r.text)
         for value in data:
-            print(value)
+            print(data[value])
         return str(data)
     else:
         pass
