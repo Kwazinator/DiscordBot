@@ -92,8 +92,7 @@ def apex(channel, message, sender):
         url = 'https://public-api.tracker.gg/apex/v1/standard/profile/5/' + message[6:]
         r = req.get(url)
         data = json.loads(r.text)
-        print(json.dumps(data, sort_keys=True, indent=4))
-        return str(data)
+        return str(json.dumps(data, sort_keys=True, indent=4))
     else:
         pass
 
