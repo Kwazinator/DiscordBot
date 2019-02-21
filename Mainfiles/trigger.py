@@ -46,7 +46,7 @@ def google(channel, message, sender):
 
 
 def help(channel, message, sender):
-    return "!igiveup: provides a solution to the daily Robot Reboot Challenge !help: provides this wonderful text !reminder: dont do nuffing yet"
+    return "!apex: provides detailed information about said player in Apex doing an API-Lookup\n!igiveup: provides a solution to the daily Robot Reboot Challenge \n!help: provides this wonderful text \n!google: google-image-searches 3 images and combines and links --Usage !google football\n !ddos sends a TCP SYNFlood attach to destination IP, B/W ~500mbps format: !ddos x.x.x.x PortNum NumPackets\n !OCR Optical Character Recognition, puts specified JPEG image into text so you can Cntrl-C it, --USAGE !OCR {complete path to .jpg} https://static.clubs.nfl.com/image/private/t_editorial_landscape_8_desktop_mobile/f_auto/patriots/nd6uaei3k83naktrqvsk.jpg"
 
 def ddos(channel, message, sender):
     if sender == 'chan2#2445':
