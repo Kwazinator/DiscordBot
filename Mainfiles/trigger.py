@@ -49,7 +49,7 @@ def help(channel, message, sender):
     return "!igiveup: provides a solution to the daily Robot Reboot Challenge\n!apex: provides detailed information about said player in Apex doing an API-Lookup --Usage !apex {player-name}\n!google: google-image-searches 3 images and combines and links --Usage !google {term}\n!ddos sends a TCP SYNFlood attach to destination IP, B/W ~500mbps --Usage !ddos {ipaddress x.x.x.x} {PortNum} {NumPackets}\n!OCR Optical Character Recognition, puts specified JPEG image into text so you can Cntrl-C it, --USAGE !OCR {complete path to .jpg MUST end with direct filename use 'copy link address' when rightclicking}"
 
 def ddos(channel, message, sender):
-    if sender == 'chan2#2445':
+    if sender == 'chan2#2445' and '!ddos' in message[6:]:
         message = message[6:]
         try:
             if message == '--help':
@@ -70,7 +70,7 @@ def ddos(channel, message, sender):
          
 
 def OCR(channel, message, sender):
-    if '!OCR' in message:
+    if '!OCR' in message[6:]:
         try:
             message = message[5:]
             fd = urlopen(message)
