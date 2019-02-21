@@ -92,7 +92,28 @@ def apex(channel, message, sender):
         url = 'https://public-api.tracker.gg/apex/v1/standard/profile/5/' + message[6:]
         r = req.get(url)
         data = json.loads(r.text)
-        return str(json.dumps(data, sort_keys=True, indent=4))
+        legend_name = str(data['data']['children'][0]['metadata']['legend_name'])
+        icon = str(data['data']['children'][0]['metadata']['icon'])
+        namer, percentiler, ranker, valuer = '', '', '', ''
+        for dater in data['data']['children'][0]['stats']:
+            namer += dater['metadata']['name'] + ' '
+            percentiler += str(dater['percentile']) + ' '
+            ranker += str(dater['rank']) + ' '
+            valuer += str(dater['value']) + ' '
+        level = str(data['data']['children'][0]['stats'][0]['displayValue'])
+        rank = str(data['data']['children'][0]['stats'][0]['displayRank'])
+        print(legend_name)
+        print(icon)
+        print(namer)
+        print(percentiler)
+        print(ranker)
+        print(valuer)
+        print(level)
+        print(rank)
+        #print(json.dumps(data, sort_keys=True, indent=4))
+        return 'Main:' + legend_name + '\n' + namer + '\n' + percentiler + '\n' + ranker + '\n' + '\n' + valuer + '\n' + rank
+        #print(json.dumps(data, sort_keys=True, indent=4))
+        #return str(json.dumps(data, sort_keys=True, indent=4))
     else:
         pass
 
