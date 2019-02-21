@@ -102,23 +102,13 @@ def apex(channel, message, sender):
             valuer[index] += str(dater['value']) + ' '
         level = str(data['data']['children'][0]['stats'][0]['displayValue'])
         rank = str(data['data']['children'][0]['stats'][0]['displayRank'])
-        print(legend_name)
-        print(icon)
-        print(namer)
-        print(percentiler)
-        print(ranker)
-        print(valuer)
-        print(level)
-        print(rank)
-        stringtoreturn = legend_name + ' Player' + '\n'
+        stringtoreturn = legend_name + ' Player' + '\n\n'
         stringtoreturn += 'Level: ' + level + '\n'
         stringtoreturn += 'Player Ranking: ' + rank + '\n'
         for index, name in enumerate(namer):
             stringtoreturn += name + ': ' + valuer[index] + '\n' + 'Percentile: ' + percentiler[index] + '\n'
         #print(json.dumps(data, sort_keys=True, indent=4))
-        return stringtoreturn
-        #print(json.dumps(data, sort_keys=True, indent=4))
-        #return str(json.dumps(data, sort_keys=True, indent=4))
+        return stringtoreturn + icon
     else:
         pass
 
