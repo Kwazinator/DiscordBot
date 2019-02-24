@@ -98,31 +98,55 @@ def apex(channel, message, sender):
         finally:
             pass
         try:
+
             legend_name = str(data['data']['children'][0]['metadata']['legend_name'])
             icon = str(data['data']['children'][0]['metadata']['icon'])
-            namer, percentiler, ranker, valuer = ['' for x in range(3)], ['' for x in range(3)], ['' for x in
-                                                                                                  range(3)], ['' for x
-                                                                                                              in
-                                                                                                              range(3)]
-            for index, dater in enumerate(data['data']['children'][0]['stats']):
-                namer[index] += dater['metadata']['name'] + ' '
-                percentiler[index] += str(dater['percentile']) + ' '
-                ranker[index] += str(dater['rank']) + ' '
-                valuer[index] += str(dater['value']) + ' '
-            level = str(data['data']['stats'][0]['displayValue'])
-            rank = str(data['data']['stats'][0]['displayRank'])
-            stringtoreturn = legend_name + ' Player' + '\n\n'
+            icons, legends = ['' for x in range(3)], ['' for x in range(3)]
+            namer, percentiler, valuer = [['' for x in range(3)] for x in range(5)], [['' for x in range(3)] for x in range(5)], [['' for x in range(3)] for x in range(5)]
+
+
+
+
+            for championIndex, dater in enumerate(data['data']['children']):
+                icons[championIndex] = dater['metadata']['icon']
+                legends[championIndex] = dater['metadata']['legend_name']
+                for cardIndex, dater2 in enumerate(dater['stats']):
+                    namer[championIndex][cardIndex] += dater2['metadata']['name'] + ' '
+                    try:
+                        percentiler[championIndex][cardIndex] += str(dater2['percentile']) + ' '
+                        valuer[championIndex][cardIndex] += str(dater2['value']) + ' '
+                    except:
+                        pass
+            try:
+                level = str(data['data']['stats'][0]['displayValue'])
+            finally:
+                pass
+            try:
+                rank = str(data['data']['stats'][0]['displayRank'])
+            except:
+                rank = ''
+            '''kills = 0
+            for championIndex, name in enumerate(namer):
+                if 'Kills' in name and valuer[championIndex]:'''
+
+            stringtoreturn = ' Player' + '\n\n'
             stringtoreturn += 'Level: ' + level + '\n'
-            stringtoreturn += 'Player Ranking: ' + rank + '\n'
-            for index, name in enumerate(namer):
-                if valuer[index] == '' or percentiler[index] == '':
-                    pass
-                else:
-                    stringtoreturn += name + ': ' + valuer[index] + '\t\t' + 'Percentile: ' + percentiler[index] + '\n'
+            stringtoreturn += 'Player Ranking: ' + rank + '\n\n'
+            for championIndex, legend in enumerate(legends):
+                stringtoreturn += legend + '\n'
+                for cardIndex, name in enumerate(namer[championIndex]):
+                    if name != '':
+                        stringtoreturn += name + ': ' + valuer[championIndex][cardIndex] + '\n'
+                stringtoreturn += '\n'
+
+
+
+
+
             print(json.dumps(data, sort_keys=True, indent=4))
             return stringtoreturn + icon
         except Exception as e:
-            return 'unable to parse from API'
+            return str(data)
         finally:
             pass
     return ''
