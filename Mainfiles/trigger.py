@@ -119,20 +119,43 @@ def apex(channel, message, sender):
                 rank = str(data['data']['stats'][0]['displayRank'])
             except:
                 rank = ''
-            '''kills = 0
+
+            try:
+                print('stuff')
+
+
+
+
+
+            except Exception as e:
+                return e
+            finally:
+                pass
+            '''order = []
             for championIndex, name in enumerate(namer):
                 if 'Kills' in name and valuer[championIndex]:'''
 
             stringtoreturn = ' Player ' + message[6:] + '\n\n'
             stringtoreturn += 'Level: ' + level + '\n'
             stringtoreturn += 'Player Ranking: ' + rank + '\n\n'
+            displayblocks = []
+            kills = 0
+            block = ''
             for championIndex, legend in enumerate(legends):
-                stringtoreturn += legend + '\n'
+                block += legend + '\n'
                 for cardIndex, name in enumerate(namer[championIndex]):
                     if name != '':
-                        stringtoreturn += name + ': ' + valuer[championIndex][cardIndex] + '\n'
-                stringtoreturn += '\n'
-            print(json.dumps(data, sort_keys=True, indent=4))
+                        block += name + ': ' + valuer[championIndex][cardIndex] + '\t\t\t' + 'Percentile: ' + percentiler[championIndex][cardIndex] + '\n'
+                    if name == 'Kills ' and valuer[championIndex][cardIndex] != '':
+                        kills = float(valuer[championIndex][cardIndex])
+                        print(kills)
+                block += '\n'
+                displayblocks.append([block,kills])
+                block = ''
+            displayblocks = sorted(displayblocks, key=lambda x: x[1], reverse=True)
+            for theblock in displayblocks:
+                stringtoreturn += theblock[0]
+            #print(json.dumps(data, sort_keys=True, indent=4))
             return stringtoreturn
         except Exception as e:
             print(json.dumps(data, sort_keys=True, indent=4))
