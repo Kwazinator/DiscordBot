@@ -98,15 +98,9 @@ def apex(channel, message, sender):
         finally:
             pass
         try:
-
-            legend_name = str(data['data']['children'][0]['metadata']['legend_name'])
             icon = str(data['data']['children'][0]['metadata']['icon'])
-            icons, legends = ['' for x in range(3)], ['' for x in range(3)]
-            namer, percentiler, valuer = [['' for x in range(3)] for x in range(5)], [['' for x in range(3)] for x in range(5)], [['' for x in range(3)] for x in range(5)]
-
-
-
-
+            icons, legends = ['' for x in range(8)], ['' for x in range(8)]
+            namer, percentiler, valuer = [['' for x in range(5)] for x in range(8)], [['' for x in range(8)] for x in range(8)], [['' for x in range(8)] for x in range(8)]
             for championIndex, dater in enumerate(data['data']['children']):
                 icons[championIndex] = dater['metadata']['icon']
                 legends[championIndex] = dater['metadata']['legend_name']
@@ -129,7 +123,7 @@ def apex(channel, message, sender):
             for championIndex, name in enumerate(namer):
                 if 'Kills' in name and valuer[championIndex]:'''
 
-            stringtoreturn = ' Player' + '\n\n'
+            stringtoreturn = ' Player ' + message[6:] + '\n\n'
             stringtoreturn += 'Level: ' + level + '\n'
             stringtoreturn += 'Player Ranking: ' + rank + '\n\n'
             for championIndex, legend in enumerate(legends):
@@ -138,15 +132,11 @@ def apex(channel, message, sender):
                     if name != '':
                         stringtoreturn += name + ': ' + valuer[championIndex][cardIndex] + '\n'
                 stringtoreturn += '\n'
-
-
-
-
-
             print(json.dumps(data, sort_keys=True, indent=4))
-            return stringtoreturn + icon
+            return stringtoreturn
         except Exception as e:
-            return str(data)
+            print(json.dumps(data, sort_keys=True, indent=4))
+            return e#str(data)
         finally:
             pass
     return ''
