@@ -67,15 +67,18 @@ class MyClient(discord.Client):
                 with open(picture, 'rb') as picture:
                     await client.send_file(message.channel, picture)
             elif checkmessage == "!del":
-                arg = {"num":utf8message[4:]}
-                mgs = [] #Empty list to put all the messages in the log
-                number = int(num) 
-                async for x in client.logs_from(ctx.message.channel, limit = number):
-                     mgs.append(x)
-                await client.delete_messages(mgs)
+                try:
+                    mgs = [] #Empty list to put all the messages in the log
+                    number = int(utf8message[5:])
+                    async for x in client.logs_from(message.channel, limit = number):
+                        mgs.append(x)
+                    await client.delete_messages(mgs)
+                except Exception as e:
+                    msg = e
+                finally:
+                    pass
             if msg != "":
                 await client.send_message(message.channel, msg)
-
 client = MyClient()
 with open('clientid.dat','r') as myfile:
     OauthToken = myfile.read()
