@@ -67,16 +67,19 @@ class MyClient(discord.Client):
                 with open(picture, 'rb') as picture:
                     await client.send_file(message.channel, picture)
             elif checkmessage == "!del":
-                try:
-                    mgs = [] #Empty list to put all the messages in the log
-                    number = int(utf8message[5:])
-                    async for x in client.logs_from(message.channel, limit = number):
-                        mgs.append(x)
-                    await client.delete_messages(mgs)
-                except Exception as e:
-                    msg = e
-                finally:
-                    pass
+                if (sender == 'Svlad_Cjelli#0042' or sender =='chan2#2445'):
+                    try:
+                        mgs = [] #Empty list to put all the messages in the log
+                        number = int(utf8message[5:]) + 1
+                        async for x in client.logs_from(message.channel, limit = number):
+                            mgs.append(x)
+                        await client.delete_messages(mgs)
+                    except Exception as e:
+                        msg = e
+                    finally:
+                        pass
+                else:
+                    msg = 'You do not have sufficient permissions to delete messages'
             if msg != "":
                 await client.send_message(message.channel, msg)
 client = MyClient()

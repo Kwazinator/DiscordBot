@@ -141,6 +141,11 @@ def apex(channel, message, sender):
             pass
     return ''
 
+def delete():
+    return ''
+
+def wordcloud():
+    return ''
 
 
 
@@ -166,7 +171,9 @@ def GetTrigger(channel, message, sender):
         "!ddos": ddos(channel, message, sender),
         "!google": google(channel, message, sender),
         "!OCR": OCR(channel, message, sender),
-        "!apex": apex(channel, message, sender)
+        "!apex": apex(channel, message, sender),
+        "!del": delete(),
+        "!wordcloud": wordcloud()
     }
     return triggers
 
