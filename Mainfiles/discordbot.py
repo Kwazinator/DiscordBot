@@ -5,7 +5,7 @@ from importlib import reload
 import FenoxWordcloud
 from google_images_download import google_images_download
 from PIL import Image
-import sys
+import os
 
 
 
@@ -80,6 +80,14 @@ class MyClient(discord.Client):
                         pass
                 else:
                     msg = 'You do not have sufficient permissions to delete messages'
+            elif checkmessage =='!reload':
+                if (sender == 'Svlad_Cjelli#0042' or sender == 'chan2#2445'):
+                    try:
+                        os.execl('./discordbot.py','')
+                    except Exception as e:
+                        msg = e
+                    finally:
+                        pass
             if msg != "":
                 await client.send_message(message.channel, msg)
 client = MyClient()
