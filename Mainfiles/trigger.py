@@ -119,25 +119,8 @@ def apex(channel, message, sender):
                 rank = str(data['data']['stats'][0]['displayRank'])
             except:
                 rank = ''
-
-            try:
-                print('stuff')
-
-
-
-
-
-            except Exception as e:
-                return e
-            finally:
-                pass
-            '''order = []
-            for championIndex, name in enumerate(namer):
-                if 'Kills' in name and valuer[championIndex]:'''
-
-            stringtoreturn = ' Player ' + message[6:] + '\n\n'
-            stringtoreturn += 'Level: ' + level + '\n'
-            stringtoreturn += 'Player Ranking: ' + rank + '\n\n'
+            if rank == '':
+                rank = 'Unranked'
             displayblocks = []
             kills = 0
             block = ''
@@ -148,11 +131,16 @@ def apex(channel, message, sender):
                         block += name + ': ' + valuer[championIndex][cardIndex] + '\t\t\t' + 'Percentile: ' + percentiler[championIndex][cardIndex] + '\n'
                     if name == 'Kills ' and valuer[championIndex][cardIndex] != '':
                         kills = float(valuer[championIndex][cardIndex])
-                        print(kills)
+                        #print(kills)
                 block += '\n'
                 displayblocks.append([block,kills])
                 block = ''
+                kills = 0
             displayblocks = sorted(displayblocks, key=lambda x: x[1], reverse=True)
+            stringtoreturn = ' Player ' + message[6:] + '\n\n'
+            #stringtoreturn += legends[0] + ' Main' + '\n'
+            stringtoreturn += 'Level: ' + level + '\n'
+            stringtoreturn += 'Player Ranking: ' + rank + '\n\n'
             for theblock in displayblocks:
                 stringtoreturn += theblock[0]
             #print(json.dumps(data, sort_keys=True, indent=4))
