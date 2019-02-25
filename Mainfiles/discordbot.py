@@ -69,7 +69,6 @@ class MyClient(discord.Client):
             elif checkmessage == "!del":
                 if (sender == 'Svlad_Cjelli#0042' or sender =='chan2#2445'):
                     try:
-                        print('hithere')
                         mgs = [] #Empty list to put all the messages in the log
                         number = int(utf8message[5:]) + 1
                         async for x in client.logs_from(message.channel, limit = number):
