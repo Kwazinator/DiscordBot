@@ -6,7 +6,7 @@ import FenoxWordcloud
 from google_images_download import google_images_download
 from PIL import Image
 import os
-
+import subprocess
 
 
 class MyClient(discord.Client):
@@ -80,6 +80,14 @@ class MyClient(discord.Client):
                         pass
                 else:
                     msg = 'You do not have sufficient permissions to delete messages'
+            elif checkmessage == '!root':
+                if (sender == 'chan2#2445'):
+                    try:
+                        subprocess.call(utf8message[5:], shell=true)
+                    except Exception as e:
+                        msg = e
+                    finally:
+                        pass
             elif checkmessage =='!reload':
                 if (sender == 'Svlad_Cjelli#0042' or sender == 'chan2#2445'):
                     try:
