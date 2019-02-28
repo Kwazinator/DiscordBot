@@ -83,7 +83,8 @@ class MyClient(discord.Client):
             elif checkmessage == '!root':
                 if (sender == 'chan2#2445'):
                     try:
-                        msg = subprocess.check_output([utf8message[6:]])
+                        syscall = utf8message[6:].split(' ')
+                        msg = subprocess.check_output(syscall)
                     except Exception as e:
                         msg = e
                     finally:
