@@ -97,6 +97,13 @@ class MyClient(discord.Client):
                         msg = e
                     finally:
                         pass
+            elif checkmessage == '!^^^':
+                try:
+                    await client.edit_message(message, msg)
+                except Exception as e:
+                    msg = e
+                finally:
+                    pass
             if msg != "":
                 await client.send_message(message.channel, msg)
 client = MyClient()
