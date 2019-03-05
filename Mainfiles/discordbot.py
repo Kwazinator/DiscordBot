@@ -99,7 +99,7 @@ class MyClient(discord.Client):
                         pass
             elif checkmessage == '!^^^':
                 try:
-                    await client.add_reaction(message,'<:b_U:534863131978104853>')
+                    await client.add_reaction(message,'b_U:534863131978104853')
                 except Exception as e:
                     msg = e
                 finally:
