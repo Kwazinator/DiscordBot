@@ -159,7 +159,9 @@ def wordcloud():
     return ''
 
 
-
+def upupup():
+    return '<:b_U:534863131978104853> <:g_U:534863064487428106> <:r_U:534827521925971987> <:y_U:534863097417039902>'
+    
 def celeste(channel, message, sender):
     return message[9:]
 
@@ -184,7 +186,8 @@ def GetTrigger(channel, message, sender):
         "!OCR": OCR(channel, message, sender),
         "!apex": apex(channel, message, sender),
         "!del": delete(),
-        "!wordcloud": wordcloud()
+        "!wordcloud": wordcloud(),
+        "!^^^": upupup()
     }
     return triggers
 
