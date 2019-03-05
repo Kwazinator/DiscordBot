@@ -99,7 +99,14 @@ class MyClient(discord.Client):
                         pass
             elif checkmessage == '!^^^':
                 try:
-                    await client.add_reaction(message,'b_U:534863131978104853')
+                    mgs = [] #Empty list to put all the messages in the log
+                    async for x in client.logs_from(message.channel, limit = 2):
+                        mgs.append(x)
+                    await client.delete_messages(mgs[0])
+                    await client.add_reaction(mgs[1],'b_U:534863131978104853')
+                    await client.add_reaction(mgs[1],'g_U:534863064487428106')
+                    await client.add_reaction(mgs[1],'r_U:534827521925971987')
+                    await client.add_reaction(mgs[1],'y_U:534863097417039902')
                 except Exception as e:
                     msg = e
                 finally:
