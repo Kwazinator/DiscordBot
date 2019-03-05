@@ -107,6 +107,7 @@ class MyClient(discord.Client):
                     await client.add_reaction(mgs[1],'g_U:534863064487428106')
                     await client.add_reaction(mgs[1],'r_U:534827521925971987')
                     await client.add_reaction(mgs[1],'y_U:534863097417039902')
+                    await client.delete_message(mgs[0])
                 except Exception as e:
                     msg = e
                 finally:
