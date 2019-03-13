@@ -100,7 +100,7 @@ def apex(channel, message, sender):
         try:
             icon = str(data['data']['children'][0]['metadata']['icon'])
             icons, legends = ['' for x in range(8)], ['' for x in range(8)]
-            namer, percentiler, valuer = [['' for x in range(5)] for x in range(8)], [['' for x in range(8)] for x in range(8)], [['' for x in range(8)] for x in range(8)]
+            namer, percentiler, valuer = [['' for x in range(10)] for x in range(10)], [['' for x in range(10)] for x in range(10)], [['' for x in range(10)] for x in range(10)]
             for championIndex, dater in enumerate(data['data']['children']):
                 icons[championIndex] = dater['metadata']['icon']
                 legends[championIndex] = dater['metadata']['legend_name']
