@@ -147,7 +147,7 @@ def apex(channel, message, sender):
             return stringtoreturn
         except Exception as e:
             print(json.dumps(data, sort_keys=True, indent=4))
-            return e#str(data)
+            return 'make sure the name is spelled correctly!'
         finally:
             pass
     return ''
