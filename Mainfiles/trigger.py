@@ -41,6 +41,9 @@ def shellcommands(channel, message, sender):
 def test(channel, message, sender):
     return channel + ' ' + message + ' ' + sender
 
+def test2(channel, message, sender):
+    return "test2"
+
 def google(channel, message, sender):
     return ''
 
@@ -187,7 +190,8 @@ def GetTrigger(channel, message, sender):
         "!apex": apex(channel, message, sender),
         "!del": delete(),
         "!wordcloud": wordcloud(),
-        "!^^^": upupup()
+        "!^^^": upupup(),
+        "!test2": test2(channel, message, sender)
     }
     return triggers
 
