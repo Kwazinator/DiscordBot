@@ -89,7 +89,7 @@ def OCR(channel, message, sender):
 
 def yunggibby(channel, message, sender):
     if '!yunggibby' in message:
-        return 'yunggibby test'
+        return 'yunggibby test2'
     
     
 def apex(channel, message, sender):
