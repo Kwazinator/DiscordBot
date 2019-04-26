@@ -87,6 +87,11 @@ def OCR(channel, message, sender):
     else:
         return ''
 
+def yunggibby(channel, message, sender):
+    if '!yunggibby' in message:
+        return 'yunggibby test'
+    
+    
 def apex(channel, message, sender):
     if '!apex' in message[0:7]:
         try:
@@ -191,7 +196,8 @@ def GetTrigger(channel, message, sender):
         "!del": delete(),
         "!wordcloud": wordcloud(),
         "!^^^": upupup(),
-        "!test2": test2(channel, message, sender)
+        "!test2": test2(channel, message, sender),
+        "!yunggibby": yunggibby(channel, message, sender)
     }
     return triggers
 
