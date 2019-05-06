@@ -152,7 +152,7 @@ def apex(channel, message, sender):
             for theblock in displayblocks:
                 stringtoreturn += theblock[0]
             #print(json.dumps(data, sort_keys=True, indent=4))
-            if message[0:7] == 'roostakk':
+            if message[6:] == 'roostakk':
                 return 'These stats are way to trash to be displayed here'
             return stringtoreturn
         except Exception as e:
