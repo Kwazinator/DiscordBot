@@ -7,7 +7,7 @@ from google_images_download import google_images_download
 from PIL import Image
 import os
 import subprocess
-
+import time
 
 class MyClient(discord.Client):
 
@@ -43,7 +43,8 @@ class MyClient(discord.Client):
                 response = google_images_download.googleimagesdownload() #limit is number of images to put in
                 arguments = {"keywords": utf8message[7:], "limit": 3, "print_urls": True}
                 paths = response.download(arguments)
-                paths = paths[utf8message[7:]]
+                print(paths)
+                paths = paths[0][utf8message[7:]]
                 images = map(Image.open, paths)
                 widths, heights = zip(*(i.size for i in images))
                 images = map(Image.open, paths) #apparently maps can only be iterated over once
@@ -56,16 +57,13 @@ class MyClient(discord.Client):
                 for im in images:
                     new_im.paste(im, (x_offset,0))
                     x_offset += im.size[0]
-                newimage = '/home/kwazinator/Desktop/GITHUB/DiscordBot/Mainfiles/downloads/' + utf8message[8:] + '.jpg'
+                newimage = '/opt/DiscordBot/Mainfiles/downloads/' + utf8message[8:] + '.jpg'
                 new_im.save(newimage, "JPEG")
-                with open(newimage, 'rb') as picture:
-                    await client.send_file(message.channel, picture)
-
+                await message.channel.send(file=discord.File(fp=newimage, filename=(utf8message[8:]+'.jpg')))
             elif utf8message == "!wordcloud":
                 FenoxWordcloud.dochannel(filename)
                 picture = filename + '.png'
-                with open(picture, 'rb') as picture:
-                    await client.send_file(message.channel, picture)
+                await message.channel.send(file=discord.File(fp=picture, filename=(picture + '.png')))
             elif checkmessage == "!del":
                 if (sender == 'Svlad_Cjelli#0042' or sender =='chan2#2445'):
                     try:
@@ -100,20 +98,53 @@ class MyClient(discord.Client):
             elif checkmessage == '!^^^':
                 try:
                     mgs = [] #Empty list to put all the messages in the log
-                    async for x in client.logs_from(message.channel, limit = 2):
+                    async for x in message.channel.history(limit = 2):
                         mgs.append(x)
                     #await client.delete_messages(mgs[0])
-                    await client.delete_message(mgs[0])
-                    await client.add_reaction(mgs[1],'b_U:534863131978104853')
-                    await client.add_reaction(mgs[1],'g_U:534863064487428106')
-                    await client.add_reaction(mgs[1],'r_U:534827521925971987')
-                    await client.add_reaction(mgs[1],'y_U:534863097417039902')
+                    await mgs[0].delete()
+                    await mgs[1].add_reaction('b_U:534863131978104853')
+                    await mgs[1].add_reaction('g_U:534863064487428106')
+                    await mgs[1].add_reaction('r_U:534827521925971987')
+                    await mgs[1].add_reaction('y_U:534863097417039902')
                 except Exception as e:
                     msg = e
                 finally:
                     pass
             if msg != "":
-                await client.send_message(message.channel, msg)
+                await message.channel.send(msg)
+            if checkmessage =='!terraria-reset':
+                try:
+                    subprocess.call('screen -S terraria -X stuff \'exit-nosave\'$(echo -ne \'\\015\')', shell=True)
+                    time.sleep(10)
+                    await message.channel.send('exited and saved world')
+                    subprocess.call('screen -S terraria -X stuff \'./tModLoaderServer\'$(echo -ne \'\\015\')', shell=True)
+                    time.sleep(25)
+                    await message.channel.send('starting tModLoaderServer')
+                    subprocess.call('screen -S terraria -X stuff \'2\'$(echo -ne \'\\015\')', shell=True)
+                    time.sleep(1)
+                    subprocess.call('screen -S terraria -X stuff \'\'$(echo -ne \'\\015\')', shell=True)
+                    time.sleep(1)
+                    subprocess.call('screen -S terraria -X stuff \'7778\'$(echo -ne \'\\015\')', shell=True)
+                    time.sleep(1)
+                    subprocess.call('screen -S terraria -X stuff \'n\'$(echo -ne \'\\015\')', shell=True)
+                    time.sleep(1)
+                    subprocess.call('screen -S terraria -X stuff \'\'$(echo -ne \'\\015\')', shell=True)
+                    await message.channel.send('starting World MinecraftRulez')
+                    time.sleep(30)
+                    await message.channel.send('World MinecraftRulez Up')
+                except Exception as e:
+                    await message.channel.send(str(e))
+                finally:
+                    pass
+            elif checkmessage =='!terraria-night':
+                subprocess.call('screen -S terraria -X stuff \'dusk\'$(echo -ne \'\\015\')', shell=True)
+            elif checkmessage == '!terraria-day':
+                subprocess.call('screen -S terraria -X stuff \'noon\'$(echo -ne \'\\015\')', shell=True)
+            elif checkmessage =='!terraria-save':
+                subprocess.call('screen -S terraria -X stuff \'save\'$(echo -ne \'\\015\')', shell=True)
+                time.sleep(6)
+                await message.channel.send('World Saved Successfuly')
+
 client = MyClient()
 with open('clientid.dat','r') as myfile:
     OauthToken = myfile.read()

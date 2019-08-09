@@ -15,6 +15,7 @@ sys.path.insert(0, '/home/kwazinator/Desktop/GITHUB/DiscordBot/Mainfiles/')
 ######################################START DEF METHODS##############################################
 # for transparency, variables saved to files since program might restart often
 def igiveup(channel, message, sender):
+    return "ok"
     with open('dayandhasconfig.txt', 'r') as file:
         data = file.read()
     if data < str(datetime.datetime.now().day) and datetime.datetime.now().hour >= 15:
@@ -40,6 +41,20 @@ def shellcommands(channel, message, sender):
 
 def test(channel, message, sender):
     return channel + ' ' + message + ' ' + sender
+
+def terrariaNight(channel, message, sender):
+    return 'setting to night'
+
+
+def terrariaDay(channel, message, sender):
+    return 'setting to day'
+
+
+def terrariaSave(channel, message, sender):
+    return 'Saving world...'
+
+def terrariaReset(channel, message, sender):
+    return 'starting reset, this may take a couple minutes'
 
 def test2(channel, message, sender):
     return "test2"
@@ -198,6 +213,10 @@ def GetTrigger(channel, message, sender):
         "!del": delete(),
         "!wordcloud": wordcloud(),
         "!^^^": upupup(),
+        "!terraria-save": terrariaSave(channel,message,sender),
+        "!terraria-night": terrariaNight(channel,message,sender),
+        "!terraria-day": terrariaDay(channel,message,sender),
+        "!terraria-reset": terrariaReset(channel,message,sender),
         "!test2": test2(channel, message, sender),
         "!yunggibby": yunggibby(channel, message, sender)
     }
