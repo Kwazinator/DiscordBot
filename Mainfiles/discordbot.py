@@ -17,8 +17,8 @@ class MyClient(discord.Client):
 
 
     async def on_reaction_add(self, reaction, user):
-        print(reaction.emoji.name)
-        print(reaction.emoji.id)
+        print(reaction.emoji)
+        print(reaction.message)
         print(user)
 
     async def on_message(self, message):
