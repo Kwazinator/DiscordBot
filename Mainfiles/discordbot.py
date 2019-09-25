@@ -8,12 +8,17 @@ from PIL import Image
 import os
 import subprocess
 import time
+import db
 
 class MyClient(discord.Client):
 
     async def on_ready(self):
         print('Logged on as {0}!'.format(self.user))
 
+        
+    async def on_reaction_add(self, reaction, user):
+        print(str(reaction) + '\n')
+        print(user)
 
     async def on_message(self, message):
         print('Message from {0.author}: {0.content}'.format(message))
