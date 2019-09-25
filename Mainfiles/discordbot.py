@@ -17,9 +17,9 @@ class MyClient(discord.Client):
 
 
     async def on_reaction_add(self, reaction, user):
-        print(str(reaction.emoji) + '\n')
+        print(reaction.emoji.name)
+        print(reaction.emoji.id)
         print(user)
-        print('test')
 
     async def on_message(self, message):
         print('Message from {0.author}: {0.content}'.format(message))
