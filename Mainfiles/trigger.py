@@ -190,9 +190,6 @@ def upupup():
 def celeste(channel, message, sender):
     return message[9:]
 
-def poll(channel, message, sender):
-    return message[6:]
-
 def reminder(channel, message, sender):
     return "reminder.txt for specific people maybe set timers? and it will @them reminding them like an alarmclock"
 ######################################END DEF METHODS#################################################
@@ -221,8 +218,7 @@ def GetTrigger(channel, message, sender):
         "!terraria-day": terrariaDay(channel,message,sender),
         "!terraria-reset": terrariaReset(channel,message,sender),
         "!test2": test2(channel, message, sender),
-        "!yunggibby": yunggibby(channel, message, sender),
-        "!poll": poll(channel, message, sender)
+        "!yunggibby": yunggibby(channel, message, sender)
     }
     return triggers
 

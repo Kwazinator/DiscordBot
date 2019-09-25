@@ -8,23 +8,11 @@ from PIL import Image
 import os
 import subprocess
 import time
-import db
-
-
-
-
 
 class MyClient(discord.Client):
 
     async def on_ready(self):
         print('Logged on as {0}!'.format(self.user))
-
-
-    async def on_reaction_add(self, reaction, user):
-        print(str(reaction) + '\n')
-        print(user)
-
-
 
 
     async def on_message(self, message):
@@ -156,9 +144,6 @@ class MyClient(discord.Client):
                 subprocess.call('screen -S terraria -X stuff \'save\'$(echo -ne \'\\015\')', shell=True)
                 time.sleep(6)
                 await message.channel.send('World Saved Successfuly')
-            elif checkmessage == '!poll':
-                await message.channel.send()
-
 
 client = MyClient()
 with open('clientid.dat','r') as myfile:
