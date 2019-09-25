@@ -183,6 +183,9 @@ def delete():
 def wordcloud():
     return ''
 
+def poll():
+    return ''
+
 
 def upupup():
     return ''#<:b_U:534863131978104853> <:g_U:534863064487428106> <:r_U:534827521925971987> <:y_U:534863097417039902>'
@@ -218,7 +221,8 @@ def GetTrigger(channel, message, sender):
         "!terraria-day": terrariaDay(channel,message,sender),
         "!terraria-reset": terrariaReset(channel,message,sender),
         "!test2": test2(channel, message, sender),
-        "!yunggibby": yunggibby(channel, message, sender)
+        "!yunggibby": yunggibby(channel, message, sender),
+        "!poll": poll()
     }
     return triggers
 

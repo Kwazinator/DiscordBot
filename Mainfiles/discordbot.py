@@ -9,6 +9,7 @@ import os
 import subprocess
 import time
 import db
+import plotlypackage
 
 class MyClient(discord.Client):
 
@@ -18,7 +19,7 @@ class MyClient(discord.Client):
 
     async def on_reaction_add(self, reaction, user):
         print(reaction.emoji)
-        print(reaction.message)
+        print(reaction.emoji.id)
         print(user)
 
     async def on_message(self, message):
@@ -149,6 +150,10 @@ class MyClient(discord.Client):
                 subprocess.call('screen -S terraria -X stuff \'save\'$(echo -ne \'\\015\')', shell=True)
                 time.sleep(6)
                 await message.channel.send('World Saved Successfuly')
+            elif checkmessage =='!poll':
+                await message.channel.send(file=discord.File(fp=plotlypackage.makeimage(), filename=('test' + '.png')),content='test')
+
+
 
 client = MyClient()
 with open('clientid.dat','r') as myfile:
