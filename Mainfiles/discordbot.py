@@ -69,9 +69,8 @@ class MyClient(discord.Client):
                     try:
                         mgs = [] #Empty list to put all the messages in the log
                         number = int(utf8message[5:]) + 1
-                        async for x in client.logs_from(message.channel, limit = number):
-                            mgs.append(x)
-                        await client.delete_messages(mgs)
+                        async for x in message.channel.history(limit = number):
+                            await x.delete()
                     except Exception as e:
                         msg = e
                     finally:
