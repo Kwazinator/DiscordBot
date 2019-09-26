@@ -7,9 +7,9 @@ def makeimage():
     fig = go.Figure(go.Bar(
         x=[8, 2],
         y=['yes', 'no'],
-        orientation='h'), layout=go.Layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)'))
+        orientation='h'), layout=go.Layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font=dict(family='Courier New, monospace', size=18, color='#7f7f7f')))
 
-    fig.show()
+    #fig.show()
 
     if not os.path.exists("images"):
         os.mkdir("images")
