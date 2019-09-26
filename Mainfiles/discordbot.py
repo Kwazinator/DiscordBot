@@ -156,6 +156,7 @@ class MyClient(discord.Client):
 
 
 
+
 client = MyClient()
 with open('clientid.dat','r') as myfile:
     OauthToken = myfile.read()
