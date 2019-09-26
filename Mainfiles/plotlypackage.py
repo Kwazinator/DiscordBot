@@ -14,4 +14,4 @@ def makeimage():
     if not os.path.exists("images"):
         os.mkdir("images")
 
-    return fig.to_image(format="png")
+    return Image.open(io.BytesIO(fig.to_image(format="png")))

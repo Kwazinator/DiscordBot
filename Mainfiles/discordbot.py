@@ -151,7 +151,8 @@ class MyClient(discord.Client):
                 time.sleep(6)
                 await message.channel.send('World Saved Successfuly')
             elif checkmessage =='!poll':
-                await message.channel.send(file=discord.File(fp=plotlypackage.makeimage(), filename=('test' + '.png')),content='test')
+                plotlypackage.makeimage().save('/opt/DiscordBot/Mainfiles/test.png',"png")
+                await message.channel.send(file=discord.File(fp='/opt/DiscordBot/Mainfiles/test.png', filename=('test' + '.png')),content='test')
 
 
 
