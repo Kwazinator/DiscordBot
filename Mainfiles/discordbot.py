@@ -71,8 +71,10 @@ class MyClient(discord.Client):
                 picture = filename + '.png'
                 await message.channel.send(file=discord.File(fp=picture, filename=(picture + '.png')))
             elif utf8message.endswith('???') or utf8message.endswith('!poll'):
-                await message.add_reaction('✖️')
-                await message.add_reaction('☑️')
+                await message.add_reaction('\N{THUMBS UP SIGN}')
+                await message.add_reaction('\N{THUMBS DOWN SIGN}')
+                await message.add_reaction('\N{CROSS MARK}')
+                await message.add_reaction('\N{CHECK MARK}')
             elif checkmessage == "!del":
                 if (sender == 'Svlad_Cjelli#0042' or sender =='chan2#2445'):
                     try:
