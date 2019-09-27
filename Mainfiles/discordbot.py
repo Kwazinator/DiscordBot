@@ -71,8 +71,8 @@ class MyClient(discord.Client):
                 picture = filename + '.png'
                 await message.channel.send(file=discord.File(fp=picture, filename=(picture + '.png')))
             elif utf8message.endswith('???') or utf8message.endswith('!poll'):
-                await message.add_reaction('\U00012714')
-                await message.add_reaction('\U0001274C')
+                await message.add_reaction('✖️')
+                await message.add_reaction('☑️')
             elif checkmessage == "!del":
                 if (sender == 'Svlad_Cjelli#0042' or sender =='chan2#2445'):
                     try:
