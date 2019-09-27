@@ -18,8 +18,8 @@ class MyClient(discord.Client):
 
 
     async def on_reaction_add(self, reaction, user):
-        print(reaction.emoji)
-        print(reaction.emoji.id)
+        #print(reaction.emoji)
+        #print(reaction.emoji.id)
         print(user)
 
     async def on_message(self, message):
@@ -71,10 +71,10 @@ class MyClient(discord.Client):
                 picture = filename + '.png'
                 await message.channel.send(file=discord.File(fp=picture, filename=(picture + '.png')))
             elif utf8message.endswith('???') or utf8message.endswith('!poll'):
-                await message.add_reaction('\N{THUMBS UP SIGN}')
-                await message.add_reaction('\N{THUMBS DOWN SIGN}')
+                #await message.add_reaction('\N{THUMBS UP SIGN}')
+                #await message.add_reaction('\N{THUMBS DOWN SIGN}')
                 await message.add_reaction('\N{CROSS MARK}')
-                await message.add_reaction('\N{NEGATIVE SQUARED CROSS MARK}')
+                #await message.add_reaction('\N{NEGATIVE SQUARED CROSS MARK}')
                 await message.add_reaction('\N{BALLOT BOX WITH CHECK}')
             elif checkmessage == "!del":
                 if (sender == 'Svlad_Cjelli#0042' or sender =='chan2#2445'):
