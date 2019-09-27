@@ -75,6 +75,7 @@ class MyClient(discord.Client):
                 await message.add_reaction('\N{THUMBS DOWN SIGN}')
                 await message.add_reaction('\N{CROSS MARK}')
                 await message.add_reaction('\N{NEGATIVE SQUARED CROSS MARK}')
+                await message.add_reaction('<:check:329003500425969677>')
             elif checkmessage == "!del":
                 if (sender == 'Svlad_Cjelli#0042' or sender =='chan2#2445'):
                     try:
