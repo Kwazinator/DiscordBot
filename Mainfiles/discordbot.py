@@ -32,8 +32,7 @@ class MyClient(discord.Client):
             if utf8message[0] != '!':
                 with open(filename,'a') as myfile:
                     myfile.write(utf8message + '\n')
-
-            #reload for gitpushes
+            # reload for gitpushes
             t = reload(trigger)
 
 
@@ -117,7 +116,7 @@ class MyClient(discord.Client):
                 finally:
                     pass
             if msg != "":
-                await message.channel.send(msg)
+                await message.channel.send(msg + '?')
             if checkmessage =='!terraria-reset':
                 try:
                     subprocess.call('screen -S terraria -X stuff \'exit-nosave\'$(echo -ne \'\\015\')', shell=True)
@@ -153,6 +152,11 @@ class MyClient(discord.Client):
             elif checkmessage =='!poll':
                 plotlypackage.makeimage().save('/opt/DiscordBot/Mainfiles/test.png',"png")
                 await message.channel.send(file=discord.File(fp='/opt/DiscordBot/Mainfiles/test.png', filename=('test' + '.png')),content='test')
+        elif utf8message.endswith('???'):
+            message.react(':x:')
+            message.react(':check:')
+
+
 
 
 
