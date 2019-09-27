@@ -70,6 +70,9 @@ class MyClient(discord.Client):
                 FenoxWordcloud.dochannel(filename)
                 picture = filename + '.png'
                 await message.channel.send(file=discord.File(fp=picture, filename=(picture + '.png')))
+            elif utf8message.endswith('???') or utf8message.endswith('!poll'):
+                message.react(':x:')
+                message.react(':check:')
             elif checkmessage == "!del":
                 if (sender == 'Svlad_Cjelli#0042' or sender =='chan2#2445'):
                     try:
@@ -152,11 +155,6 @@ class MyClient(discord.Client):
             elif checkmessage =='!poll':
                 plotlypackage.makeimage().save('/opt/DiscordBot/Mainfiles/test.png',"png")
                 await message.channel.send(file=discord.File(fp='/opt/DiscordBot/Mainfiles/test.png', filename=('test' + '.png')),content='test')
-        elif utf8message.endswith('???') or utf8message.endswith('!poll'):
-            message.react(':x:')
-            message.react(':check:')
-
-
 
 
 
