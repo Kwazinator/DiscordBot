@@ -152,7 +152,7 @@ class MyClient(discord.Client):
             elif checkmessage =='!poll':
                 plotlypackage.makeimage().save('/opt/DiscordBot/Mainfiles/test.png',"png")
                 await message.channel.send(file=discord.File(fp='/opt/DiscordBot/Mainfiles/test.png', filename=('test' + '.png')),content='test')
-        elif utf8message.endswith('???'):
+        elif utf8message.endswith('???') or utf8message.endswith('!poll'):
             message.react(':x:')
             message.react(':check:')
 
