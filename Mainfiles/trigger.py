@@ -8,6 +8,7 @@ import sys
 import io
 import requests
 import json
+import boto3 as aws
 
 #needed for script to be run in any file location, will migrate to database at some point
 sys.path.insert(0, '/home/kwazinator/Desktop/GITHUB/DiscordBot/Mainfiles/')
@@ -31,6 +32,45 @@ def igiveup(channel, message, sender):
 
 def whoami(channel, message, sender):
     return "You are you."
+
+def get_aws_client_instance():
+    with open('aws_client_id.dat','r') as myfile:
+        client_id = myfile.read()
+    with open('aws_secret_id.dat','r') as myfile:
+        secret_id = myfile.read()
+    return aws.client('ec2',aws_access_key_id=client_id, aws_secret_access_key=secret_id, region_name='us-east-2')
+
+
+def minecraft(channel, message, sender):
+    if '!minecraft' in message:
+        message = message[11:]
+    if message == 'start':
+        client = get_aws_client_instance()
+        try:
+            client.start_instances(InstanceIds=['i-070ca58fd35b3b89c'], DryRun=False)
+        except Exception as e:
+            msg = 'COULD NOT START SERVER\n\n'
+            msg += str(e)
+            return msg
+        finally:
+            pass
+        return 'starting server...'
+    
+    elif message == 'stop':
+        client = get_aws_client_instance()
+        try:
+            client.stop_instances(InstanceIds=['i-070ca58fd35b3b89c'], DryRun=False)
+        except Exception as e:
+            msg = 'COULD NOT STOP SERVER\n\n'
+            msg += str(e)
+            return msg
+        finally:
+            pass
+        return 'stopping server...'
+    else:
+        return 'Unknown command, use:\n!minecraft start\n!minecraft stop'
+        
+    
 
 def whoamireally(channel, message, sender):
     return "I am he, as you are he, as you are me and we are all together."
@@ -222,7 +262,8 @@ def GetTrigger(channel, message, sender):
         "!terraria-reset": terrariaReset(channel,message,sender),
         "!test2": test2(channel, message, sender),
         "!yunggibby": yunggibby(channel, message, sender),
-        "!poll": poll()
+        "!poll": poll(),
+        "!minecraft": minecraft(channel,message,sender)
     }
     return triggers
 
