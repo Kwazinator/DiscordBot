@@ -36,8 +36,10 @@ def whoami(channel, message, sender):
 def get_aws_client_instance():
     with open('aws_client_id.dat','r') as myfile:
         client_id = myfile.read()
+        client_id = str(client_id[:-1])
     with open('aws_secret_id.dat','r') as myfile:
         secret_id = myfile.read()
+        secret_id = str(secret_id[:-1])
     return aws.client('ec2',aws_access_key_id=client_id, aws_secret_access_key=secret_id, region_name='us-east-2')
 
 
