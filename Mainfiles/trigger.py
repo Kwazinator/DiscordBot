@@ -70,9 +70,13 @@ def minecraft(channel, message, sender):
             pass
         return 'stopping server...'
     elif message == 'status':
+        msg = ''
         client = get_aws_client_instance()
         response = client.describe_instances()
-        print(json.dumps(json.loads(str(response)), indent=4, sort_keys=True))
+        for instance in response['Reservations'][0]['Instances']:
+            if instance['InstanceId'] == 'i-070ca58fd35b3b89c':
+                msg = instance['State']['Name']
+        return msg
     else:
         return 'Unknown command, use:\n!minecraft start\n!minecraft stop\n!minecraft status'
         
