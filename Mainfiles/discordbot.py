@@ -122,7 +122,7 @@ class MyClient(discord.Client):
                 finally:
                     pass
             if msg != "":
-                await message.channel.send(msg + '?')
+                await message.channel.send(msg)
             if checkmessage =='!terraria-reset':
                 try:
                     subprocess.call('screen -S terraria -X stuff \'exit-nosave\'$(echo -ne \'\\015\')', shell=True)
