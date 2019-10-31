@@ -72,7 +72,7 @@ def minecraft(channel, message, sender):
     elif message == 'status':
         client = get_aws_client_instance()
         response = client.describe_instances()
-        return str(response)
+        print(str(response))
     else:
         return 'Unknown command, use:\n!minecraft start\n!minecraft stop\n!minecraft status'
         
