@@ -69,6 +69,10 @@ def minecraft(channel, message, sender):
         finally:
             pass
         return 'stopping server...'
+    elif message == 'status':
+        client = get_aws_client_instance()
+        response = ec2.describe_instances()
+        return str(response)
     else:
         return 'Unknown command, use:\n!minecraft start\n!minecraft stop'
         
