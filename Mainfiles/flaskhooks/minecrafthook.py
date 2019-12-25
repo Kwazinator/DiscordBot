@@ -1,4 +1,4 @@
-#!/home/root/discordbot/discordbotenv/bin/python3.6
+#!/root/discordbot/discordbotenv/bin/python3.6
 from flask import Flask, request
 import json
 import git

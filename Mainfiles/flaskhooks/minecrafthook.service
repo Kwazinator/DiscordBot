@@ -4,8 +4,8 @@ Description=minecraft listener for discordbot on screen session
 After=multi-user.target
 
 [Service]
-WorkingDirectory=/home/root/discordbot/DiscordBot/Mainfiles/
-ExecStart=/home/root/discordbot/DiscordBot/Mainfiles/minecrafthook.py
+WorkingDirectory=/root/discordbot/DiscordBot/Mainfiles/
+ExecStart=/root/discordbot/DiscordBot/Mainfiles/minecrafthook.py
 Restart=always
 RestartSec=5s
 
