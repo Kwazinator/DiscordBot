@@ -1,7 +1,6 @@
 #!/root/discordbot/discordbotenv/bin/python3
 from flask import Flask, request
 import json
-import git
 import subprocess
 
 app = Flask(__name__)
