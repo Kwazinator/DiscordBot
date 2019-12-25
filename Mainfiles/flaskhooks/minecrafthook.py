@@ -1,4 +1,4 @@
-#!/home/kwaz/flaskapp/flaskappenv/bin/python3.6
+#!/home/kwaz/discordbot/discordbotenv/bin/python3.6
 from flask import Flask, request
 import json
 import git
