@@ -9,6 +9,7 @@ import io
 import requests
 import json
 import boto3 as aws
+import requests
 
 #needed for script to be run in any file location, will migrate to database at some point
 sys.path.insert(0, '/home/kwazinator/Desktop/GITHUB/DiscordBot/Mainfiles/')
@@ -44,7 +45,8 @@ def get_aws_client_instance():
 
 
 def minecraft(channel, message, sender):
-    if '!minecraft' in message:
+    '''
+        if '!minecraft' in message:
         message = message[11:]
     if message == 'start':
         client = get_aws_client_instance()
@@ -57,7 +59,7 @@ def minecraft(channel, message, sender):
         finally:
             pass
         return 'starting server...'
-    
+
     elif message == 'stop':
         client = get_aws_client_instance()
         try:
@@ -79,7 +81,38 @@ def minecraft(channel, message, sender):
         return msg
     else:
         return 'Unknown command, use:\n!minecraft start\n!minecraft stop\n!minecraft status'
-        
+    :param channel:
+    :param message:
+    :param sender:
+    :return:
+    '''
+    if '!minecraft' in message:
+        message = message[11:]
+    if message == 'start':
+        data = {'data': 'backup'}
+        # sending post request and saving response as response object
+        r = requests.post(url='10.150.10.43:7676', data=data)
+        return 'Starting server... This will take about 75 seconds'
+    elif message == 'stop':
+        data = {'data': 'stop'}
+        # sending post request and saving response as response object
+        r = requests.post(url='10.150.10.43:7676', data=data)
+        return 'stopping server...'
+    elif message == 'status':
+        msg = 'not implemented yet'
+        data = {'data': 'status'}
+        # sending post request and saving response as response object
+        r = requests.post(url='10.150.10.43:7676', data=data)
+        return msg
+    elif message == 'backup':
+        msg = 'backing up now'
+        data = {'data': 'backup'}
+        # sending post request and saving response as response object
+        r = requests.post(url='10.150.10.43:7676', data=data)
+        return msg
+    else:
+        return 'Unknown command, use:\n!minecraft start\n!minecraft stop\n!minecraft status'
+
     
 
 def whoamireally(channel, message, sender):
