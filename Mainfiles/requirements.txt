@@ -1,0 +1,7 @@
+discord.py
+google_images_download
+pillow
+plotly
+wordcloud
+pytesseract
+boto3
