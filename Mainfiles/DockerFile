@@ -1,0 +1,5 @@
+FROM python:3
+COPY . /opt/DiscordBot
+WORKDIR /opt/DiscordBot
+RUN pip install -r requirements.txt
+CMD ./discordbot.py
