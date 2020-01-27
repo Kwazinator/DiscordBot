@@ -12,7 +12,7 @@ import boto3 as aws
 import requests
 
 #needed for script to be run in any file location, will migrate to database at some point
-sys.path.insert(0, '/home/kwazinator/Desktop/GITHUB/DiscordBot/Mainfiles/')
+# sys.path.insert(0, '/home/kwazinator/Desktop/GITHUB/DiscordBot/Mainfiles/')
 
 ######################################START DEF METHODS##############################################
 # for transparency, variables saved to files since program might restart often
@@ -35,6 +35,7 @@ def whoami(channel, message, sender):
     return "You are you."
 
 def get_aws_client_instance():
+    return "nope"
     with open('aws_client_id.dat','r') as myfile:
         client_id = myfile.read()
         client_id = str(client_id[:-1])

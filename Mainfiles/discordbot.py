@@ -1,4 +1,3 @@
-#!/home/kwazinator/PycharmProjects/robits/venv/bin/python3.5
 import discord
 import trigger
 from importlib import reload
@@ -63,7 +62,7 @@ class MyClient(discord.Client):
                 for im in images:
                     new_im.paste(im, (x_offset,0))
                     x_offset += im.size[0]
-                newimage = '/opt/DiscordBot/Mainfiles/downloads/' + utf8message[8:] + '.jpg'
+                newimage = 'downloads/' + utf8message[8:] + '.jpg'
                 new_im.save(newimage, "JPEG")
                 await message.channel.send(file=discord.File(fp=newimage, filename=(utf8message[8:]+'.jpg')))
             elif utf8message == "!wordcloud":

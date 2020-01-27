@@ -1,7 +1,9 @@
 discord.py
 google_images_download
+scapy
 pillow
 plotly
 wordcloud
+requests
 pytesseract
 boto3
