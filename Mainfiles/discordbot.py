@@ -29,14 +29,14 @@ class MyClient(discord.Client):
         if sender != 'Kahzam#8492':
             filename = "Fenox" + str(message.channel) + '.txt'
             if utf8message[0] != '!':
-                with open(filename,'a') as myfile:
+                with open('chatdata/'+filename,'a') as myfile:
                     myfile.write(utf8message + '\n')
             # reload for gitpushes
-            t = reload(trigger)
+            #t = reload(trigger)
 
 
             checkmessage = utf8message.split(' ')[0]
-            trig = t.GetTrigger(str(message.channel), utf8message,sender)
+            trig = trigger.GetTrigger(str(message.channel), utf8message,sender)
             if checkmessage in trig:
                 msg = trig.get(checkmessage, "")
             elif utf8message[0] == '!':
