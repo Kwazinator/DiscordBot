@@ -40,7 +40,7 @@ class MyClient(discord.Client):
             if checkmessage in trig:
                 msg = trig.get(checkmessage, "")
             elif utf8message[0] == '!':
-                msg = "invalid command please use !help for help"
+                msg = ''
             else:
                 msg = ''
             #print(msg)
