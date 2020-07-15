@@ -69,7 +69,7 @@ class MyClient(discord.Client):
                 FenoxWordcloud.dochannel(filename)
                 picture = filename + '.png'
                 await message.channel.send(file=discord.File(fp=picture, filename=(picture + '.png')))
-            elif utf8message.endswith('???') or utf8message.endswith('!poll') or utf8message.endswith('!?'):
+            elif utf8message.endswith('!poll') or utf8message.endswith('!?'):
                 #await message.add_reaction('\N{THUMBS UP SIGN}')
                 #await message.add_reaction('\N{THUMBS DOWN SIGN}')
                 #await message.add_reaction('\N{NEGATIVE SQUARED CROSS MARK}')
