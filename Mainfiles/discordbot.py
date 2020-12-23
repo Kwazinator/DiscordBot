@@ -9,6 +9,7 @@ import subprocess
 import time
 import db
 import plotlypackage
+import random
 
 class MyClient(discord.Client):
 
@@ -69,12 +70,14 @@ class MyClient(discord.Client):
                 FenoxWordcloud.dochannel(filename)
                 picture = filename + '.png'
                 await message.channel.send(file=discord.File(fp=picture, filename=(picture + '.png')))
-            elif utf8message.endswith('!poll') or utf8message.endswith('!?'):
-                #await message.add_reaction('\N{THUMBS UP SIGN}')
-                #await message.add_reaction('\N{THUMBS DOWN SIGN}')
+            elif utf8message.startswith('!poll')
+                await message.channel.send(utf8message[6:len(utf8message)])
+            elif utf8message.endswith('!?'):
+                await message.add_reaction('\N{THUMBS UP SIGN}')
+                await message.add_reaction('\N{THUMBS DOWN SIGN}')
                 #await message.add_reaction('\N{NEGATIVE SQUARED CROSS MARK}')
-                await message.add_reaction('\N{BALLOT BOX WITH CHECK}')
-                await message.add_reaction('\N{CROSS MARK}')
+                # await message.add_reaction('\N{BALLOT BOX WITH CHECK}')
+                # await message.add_reaction('\N{CROSS MARK}')
             elif checkmessage == "!del":
                 if (sender == 'Svlad_Cjelli#0042' or sender =='chan2#2445'):
                     try:
@@ -105,6 +108,15 @@ class MyClient(discord.Client):
                         msg = e
                     finally:
                         pass
+            elif checkmessage =='!rollpick':
+                try:
+                    async with message.channel.typing():
+                        msgs = await message.author.get_channel(781356288348520468).history().flatten()
+                        await message.channel.send(msgs[random(3,len(msgs))])
+                except Exception as e:
+                    msg = e
+                finally
+                    pass
             elif checkmessage == '!^^^':
                 try:
                     mgs = [] #Empty list to put all the messages in the log
