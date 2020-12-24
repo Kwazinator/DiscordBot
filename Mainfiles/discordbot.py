@@ -70,7 +70,7 @@ class MyClient(discord.Client):
                 FenoxWordcloud.dochannel(filename)
                 picture = filename + '.png'
                 await message.channel.send(file=discord.File(fp=picture, filename=(picture + '.png')))
-            elif utf8message.startswith('!poll')
+            elif utf8message.startswith('!poll'):
                 numbers = ['\N{ONE}','\N{TWO}','\N{THREE}','\N{FOUR}','\N{FIVE}','\N{SIX}','\N{SEVEN}','\N{EIGHT}','\N{NINE}','\N{TEN}']
                 async with message.channel.typing():
                     qmark = utf8message.find("?",6)
@@ -125,6 +125,7 @@ class MyClient(discord.Client):
                         msg = random.choice(msgs[3:]).content
                 except Exception as e:
                     msg = e
+                finally:
                     pass
             elif checkmessage == '!^^^':
                 try:
