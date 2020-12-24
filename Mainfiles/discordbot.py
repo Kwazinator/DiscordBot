@@ -111,7 +111,8 @@ class MyClient(discord.Client):
             elif checkmessage =='!rollpick':
                 try:
                     async with message.channel.typing():
-                        msgs = client.get_channel(781356288348520468).history().flatten()
+                        channel = client.get_channel(781356288348520468)
+                        msgs = await channel.history().flatten()
                         movies = random.sample(msgs,3)
                         msg = ''
                         for movie in movies:
