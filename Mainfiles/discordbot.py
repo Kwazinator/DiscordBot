@@ -116,7 +116,7 @@ class MyClient(discord.Client):
                         movies = random.sample(msgs,3)
                         msg = ''
                         for movie in movies:
-                            msg += movie + '\n'
+                            msg += movie.content + '\n'
                 except Exception as e:
                     msg = e
                 finally:
