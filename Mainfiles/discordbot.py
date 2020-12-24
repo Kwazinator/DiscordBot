@@ -120,11 +120,19 @@ class MyClient(discord.Client):
             elif checkmessage =='!rollpick':
                 try:
                     async with message.channel.typing():
+<<<<<<< HEAD
                         msgs = await message.author.guild.get_channel(781356288348520468).history().flatten()
                         await message.channel.send(msgs[random(3,len(msgs))])
+=======
+                        msgs = client.get_channel(781356288348520468).history().flatten()
+                        movies = random.sample(msgs,3)
+                        msg = ''
+                        for movie in movies:
+                            msg += movie + '\n'
+>>>>>>> 17688a86f35c4f421d21b448be8591adef6a292b
                 except Exception as e:
                     msg = e
-                finally
+                finally:
                     pass
             elif checkmessage == '!^^^':
                 try:
