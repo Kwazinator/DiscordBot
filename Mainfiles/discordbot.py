@@ -115,7 +115,7 @@ class MyClient(discord.Client):
                         await message.channel.send(msgs[random(3,len(msgs))])
                 except Exception as e:
                     msg = e
-                finally
+                finally:
                     pass
             elif checkmessage == '!^^^':
                 try:
