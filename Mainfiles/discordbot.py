@@ -71,7 +71,16 @@ class MyClient(discord.Client):
                 picture = filename + '.png'
                 await message.channel.send(file=discord.File(fp=picture, filename=(picture + '.png')))
             elif utf8message.startswith('!poll')
-                await message.channel.send(utf8message[6:len(utf8message)])
+                numbers = ['\N{ONE}','\N{TWO}','\N{THREE}','\N{FOUR}','\N{FIVE}','\N{SIX}','\N{SEVEN}','\N{EIGHT}','\N{NINE}','\N{TEN}']
+                async with message.channel.typing():
+                    qmark = utf8message.find("?",6)
+                    answers = re.split('\d',utf8message[qmark:])
+                    poll_text = utf8message[6:qmark]
+                    for ans in answers:
+                        poll_text += "\n" + ans
+                    await message.edit(poll_text)
+                    for x in range(0,len(answers)-1):
+                        await message.add_reaction(numbers[x])
             elif utf8message.endswith('!?'):
                 await message.add_reaction('\N{THUMBS UP SIGN}')
                 await message.add_reaction('\N{THUMBS DOWN SIGN}')
@@ -111,7 +120,7 @@ class MyClient(discord.Client):
             elif checkmessage =='!rollpick':
                 try:
                     async with message.channel.typing():
-                        msgs = await message.author.get_channel(781356288348520468).history().flatten()
+                        msgs = await message.author.guild.get_channel(781356288348520468).history().flatten()
                         await message.channel.send(msgs[random(3,len(msgs))])
                 except Exception as e:
                     msg = e
