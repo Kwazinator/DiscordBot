@@ -122,10 +122,7 @@ class MyClient(discord.Client):
                     async with message.channel.typing():
                         channel = client.get_channel(781356288348520468)
                         msgs = await channel.history().flatten()
-                        movies = random.sample(msgs,3)
-                        msg = ''
-                        for movie in movies:
-                            msg += movie.content + '\n'
+                        msg = random.choice(msgs[3:])
                 except Exception as e:
                     msg = e
                     pass
