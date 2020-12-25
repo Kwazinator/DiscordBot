@@ -71,7 +71,7 @@ class MyClient(discord.Client):
                 picture = filename + '.png'
                 await message.channel.send(file=discord.File(fp=picture, filename=(picture + '.png')))
             elif utf8message.startswith('!poll')
-                numbers = ['\N{ONE}','\N{TWO}','\N{THREE}','\N{FOUR}','\N{FIVE}','\N{SIX}','\N{SEVEN}','\N{EIGHT}','\N{NINE}','\N{TEN}']
+                numbers =  ['1⃣', '2⃣', '3⃣', '4⃣', '5⃣', '6⃣', '7⃣', '8⃣', '9⃣', '🔟']#["\N{ONE}","\N{TWO}","\N{THREE}","\N{FOUR}","\N{FIVE}","\N{SIX}","\N{SEVEN}","\N{EIGHT}","\N{NINE}","\N{TEN}"]
                 async with message.channel.typing():
                     qmark = utf8message.find("?",6)
                     answers = re.split('\d',utf8message[qmark:])
