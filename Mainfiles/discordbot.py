@@ -10,6 +10,7 @@ import time
 import db
 import plotlypackage
 import random
+import datetime as dt
 
 class MyClient(discord.Client):
 
@@ -176,10 +177,15 @@ class MyClient(discord.Client):
                 subprocess.call('screen -S terraria -X stuff \'save\'$(echo -ne \'\\015\')', shell=True)
                 time.sleep(6)
                 await message.channel.send('World Saved Successfuly')
-            elif checkmessage =='!poll':
+            elif checkmessage =='!poll2':
                 plotlypackage.makeimage().save('/opt/DiscordBot/Mainfiles/test.png',"png")
                 await message.channel.send(file=discord.File(fp='/opt/DiscordBot/Mainfiles/test.png', filename=('test' + '.png')),content='test')
-
+            elif checkmessage == '!playlist':
+                look_limit = 300
+                look_limit = message.channel.history(
+                previous_month = (dt.date.today().replace(day=1) - dt.timedelta(days=1)).month
+                async for x in message.channel.history(after=time.fromtimestamp(dt.year.today, previous_month,dt.date.today)).flatten:
+                    #do something abbout adding the messagges to a playlist oh boy
 
 
 
